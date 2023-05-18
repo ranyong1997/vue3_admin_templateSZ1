@@ -20,17 +20,17 @@ defineProps({
     // 接受父组件传递颜色
     color: {
         type: String,
-        default: ''
+        default: '',
     },
     // 接受父组件传递过来的宽度
     width: {
         type: String,
-        default: '16px'
+        default: '16px',
     },
     // 接受父组件传递过来的高度
     height: {
         type: String,
-        default: '16px'
+        default: '16px',
     }
 })
 </script>

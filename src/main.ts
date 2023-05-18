@@ -13,5 +13,9 @@ app.use(ElementPlus, {
 })
 // svg插件需要配置代码
 import 'virtual:svg-icons-register'
+// 引入自定义插件：注册整个项目组件
+import gloalComponent from '@/components'
+// 安装自定义插件
+app.use(gloalComponent)
 //将应用挂载到挂载点上
 app.mount('#app')
