@@ -1,10 +1,9 @@
 <template>
   <div>
-    <h1>新增一个标题</h1>
+    <router-view></router-view>
   </div>
 </template>
 
-<script setup lang="ts">
-</script>
+<script setup lang="ts"></script>
 
 <style scoped></style>
