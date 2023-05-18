@@ -17,5 +17,7 @@ import 'virtual:svg-icons-register'
 import gloalComponent from '@/components'
 // 安装自定义插件
 app.use(gloalComponent)
+// 引入模板的全局样式
+import '@/style/index.scss'
 //将应用挂载到挂载点上
 app.mount('#app')
