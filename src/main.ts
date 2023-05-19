@@ -13,6 +13,8 @@ import 'virtual:svg-icons-register'
 import gloalComponent from '@/components'
 // 引入路由
 import router from './router'
+// 引入仓库
+import pinia from './store'
 //获取应用实例对象
 const app = createApp(App)
 //安装element-plus插件
@@ -23,5 +25,7 @@ app.use(ElementPlus, {
 app.use(gloalComponent)
 // 注册模版路由
 app.use(router)
+// 安装仓库pinia
+app.use(pinia);
 //将应用挂载到挂载点上
 app.mount('#app')
