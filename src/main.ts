@@ -26,6 +26,6 @@ app.use(gloalComponent)
 // 注册模版路由
 app.use(router)
 // 安装仓库pinia
-app.use(pinia);
+app.use(pinia)
 //将应用挂载到挂载点上
 app.mount('#app')
