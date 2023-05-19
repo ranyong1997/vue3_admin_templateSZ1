@@ -7,13 +7,23 @@
           <h1>Hello</h1>
           <h2>欢迎来到硅谷甄选</h2>
           <el-form-item>
-            <el-input :prefix-icon="User" v-model="loginForm.username"></el-input>
+            <el-input
+              :prefix-icon="User"
+              v-model="loginForm.username"
+            ></el-input>
           </el-form-item>
           <el-form-item>
-            <el-input type="password" :prefix-icon="Lock" v-model="loginForm.password" show-password></el-input>
+            <el-input
+              type="password"
+              :prefix-icon="Lock"
+              v-model="loginForm.password"
+              show-password
+            ></el-input>
           </el-form-item>
           <el-form-item>
-            <el-button class="login_btn" type="primary" size="default">登录</el-button>
+            <el-button class="login_btn" type="primary" size="default">
+              登录
+            </el-button>
           </el-form-item>
         </el-form>
       </el-col>
@@ -24,11 +34,11 @@
 <script setup lang="ts">
 import { User, Lock } from '@element-plus/icons-vue'
 // 收集账号与密码的数据
-import { reactive } from 'vue';
+import { reactive } from 'vue'
 
 let loginForm = reactive({
   username: 'admin',
-  password: '111111'
+  password: '111111',
 })
 </script>
 
