@@ -7,13 +7,27 @@
           <h1>Hello</h1>
           <h2>欢迎来到硅谷甄选</h2>
           <el-form-item>
-            <el-input :prefix-icon="User" v-model="loginForm.username"></el-input>
+            <el-input
+              :prefix-icon="User"
+              v-model="loginForm.username"
+            ></el-input>
           </el-form-item>
           <el-form-item>
-            <el-input type="password" :prefix-icon="Lock" v-model="loginForm.password" show-password></el-input>
+            <el-input
+              type="password"
+              :prefix-icon="Lock"
+              v-model="loginForm.password"
+              show-password
+            ></el-input>
           </el-form-item>
           <el-form-item>
-            <el-button :loading="loading" class="login_btn" type="primary" size="default" @click="login">
+            <el-button
+              :loading="loading"
+              class="login_btn"
+              type="primary"
+              size="default"
+              @click="login"
+            >
               登录
             </el-button>
           </el-form-item>
@@ -49,13 +63,13 @@ const login = async () => {
   loading.value = true
   try {
     // 保证登录成功
-    await useStore.userLogin(loginForm);
+    await useStore.userLogin(loginForm)
     //  编程式导航跳转到展示数据首页
     $router.push('/')
     // 登录成功提示信息
     ElNotification({
       type: 'success',
-      message: '登录成功'
+      message: '登录成功',
     })
     // 登录成功加载效果也消失
     loading.value = false
@@ -65,7 +79,7 @@ const login = async () => {
     // 登录失败提示信息
     ElNotification({
       type: 'error',
-      message: (error as Error).message
+      message: (error as Error).message,
     })
   }
 }
