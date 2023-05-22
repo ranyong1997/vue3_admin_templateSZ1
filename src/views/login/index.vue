@@ -7,27 +7,13 @@
           <h1>Hello</h1>
           <h2>欢迎来到硅谷甄选</h2>
           <el-form-item>
-            <el-input
-              :prefix-icon="User"
-              v-model="loginForm.username"
-            ></el-input>
+            <el-input :prefix-icon="User" v-model="loginForm.username"></el-input>
           </el-form-item>
           <el-form-item>
-            <el-input
-              type="password"
-              :prefix-icon="Lock"
-              v-model="loginForm.password"
-              show-password
-            ></el-input>
+            <el-input type="password" :prefix-icon="Lock" v-model="loginForm.password" show-password></el-input>
           </el-form-item>
           <el-form-item>
-            <el-button
-              :loading="loading"
-              class="login_btn"
-              type="primary"
-              size="default"
-              @click="login"
-            >
+            <el-button :loading="loading" class="login_btn" type="primary" size="default" @click="login">
               登录
             </el-button>
           </el-form-item>
@@ -46,7 +32,8 @@ import { useRouter } from 'vue-router'
 import { ElNotification } from 'element-plus'
 // 引入用户相关的小仓库
 import userUserStore from '@/store/modules/user'
-import { tr } from 'element-plus/es/locale'
+// 引入获取当前时间的函数
+import { getTime } from '@/utils/time'
 // 定义变量控制按钮加载效果
 let loading = ref(false)
 let useStore = userUserStore()
@@ -69,7 +56,8 @@ const login = async () => {
     // 登录成功提示信息
     ElNotification({
       type: 'success',
-      message: '登录成功',
+      message: '欢迎回来',
+      title: `HI,${getTime()}好!`
     })
     // 登录成功加载效果也消失
     loading.value = false
