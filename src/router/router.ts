@@ -6,7 +6,7 @@ export const constantRouter = [
     name: 'login', // 命名路由
     meta: {
       title: '登录', // 菜单标题
-      hidden: true, // 代表路由标题在菜单中是否隐藏 true 隐藏 false 
+      hidden: true, // 代表路由标题在菜单中是否隐藏 true 隐藏 false
       icon: 'Promotion', // 菜单文字左侧的图标，支持element-plus全部图标
     },
   },
@@ -17,7 +17,7 @@ export const constantRouter = [
     meta: {
       title: 'layout',
       hidden: false,
-      icon: 'Avatar'
+      icon: 'Avatar',
     },
     children: [
       {
@@ -28,7 +28,7 @@ export const constantRouter = [
         meta: {
           title: '首页',
           hidden: false,
-          icon: 'HomeFilled'
+          icon: 'HomeFilled',
         },
       },
     ],
@@ -40,7 +40,7 @@ export const constantRouter = [
     meta: {
       title: '404',
       hidden: true,
-      icon: 'DocumentDelete'
+      icon: 'DocumentDelete',
     },
   },
   {
@@ -50,7 +50,7 @@ export const constantRouter = [
     meta: {
       title: '任意路由',
       hidden: true,
-      icon: 'List'
+      icon: 'List',
     },
   },
 ]
