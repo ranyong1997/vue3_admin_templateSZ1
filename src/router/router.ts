@@ -30,7 +30,7 @@ export const constantRouter = [
           icon: 'HomeFilled',
         },
       },
-    ]
+    ],
   },
   {
     path: '/404',
@@ -40,7 +40,7 @@ export const constantRouter = [
       title: '404',
       hidden: true,
       icon: 'DocumentDelete',
-    }
+    },
   },
   {
     path: '/:pathMatch(.*)*',
@@ -50,7 +50,7 @@ export const constantRouter = [
       title: '任意路由',
       hidden: true,
       icon: 'List',
-    }
+    },
   },
   {
     path: '/screen',
@@ -60,7 +60,7 @@ export const constantRouter = [
       title: '数据大屏',
       hidden: false,
       icon: 'Platform',
-    }
+    },
   },
   {
     path: '/acl',
@@ -79,8 +79,8 @@ export const constantRouter = [
         meta: {
           title: '用户管理',
           hidden: false,
-          icon: 'User'
-        }
+          icon: 'User',
+        },
       },
       {
         path: '/acl/role',
@@ -89,8 +89,8 @@ export const constantRouter = [
         meta: {
           title: '角色管理',
           hidden: false,
-          icon: 'UserFilled'
-        }
+          icon: 'UserFilled',
+        },
       },
       {
         path: '/acl/permission',
@@ -99,10 +99,10 @@ export const constantRouter = [
         meta: {
           title: '菜单管理',
           hidden: false,
-          icon: 'Monitor'
-        }
+          icon: 'Monitor',
+        },
       },
-    ]
+    ],
   },
   {
     path: '/product',
@@ -121,8 +121,8 @@ export const constantRouter = [
         meta: {
           title: '属性管理',
           hidden: false,
-          icon: 'ChromeFilled'
-        }
+          icon: 'ChromeFilled',
+        },
       },
       {
         path: '/product/sku',
@@ -131,8 +131,8 @@ export const constantRouter = [
         meta: {
           title: 'Sku管理',
           hidden: false,
-          icon: 'Apple'
-        }
+          icon: 'Apple',
+        },
       },
       {
         path: '/product/spu',
@@ -141,8 +141,8 @@ export const constantRouter = [
         meta: {
           title: 'Spu管理',
           hidden: false,
-          icon: 'Calendar'
-        }
+          icon: 'Calendar',
+        },
       },
       {
         path: '/product/trademark',
@@ -151,9 +151,9 @@ export const constantRouter = [
         meta: {
           title: '品牌管理',
           hidden: false,
-          icon: 'ShoppingCartFull'
-        }
+          icon: 'ShoppingCartFull',
+        },
       },
-    ]
-  }
+    ],
+  },
 ]
