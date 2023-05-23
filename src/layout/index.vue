@@ -16,7 +16,9 @@
     <!-- 顶部菜单 -->
     <div class="layout_tabbar">2</div>
     <!-- 内容展示区域 -->
-    <div class="layout_main">3</div>
+    <div class="layout_main">
+      <Main></Main>
+    </div>
   </div>
 </template>
 
@@ -27,6 +29,8 @@ import Logo from './logo/index.vue'
 import Menu from './menu/index.vue'
 // 获取用户相关的小仓库
 import useUserStore from '@/store/modules/user'
+// 右侧内容展示区
+import Main from './main/index.vue'
 let userStore = useUserStore()
 </script>
 
