@@ -6,8 +6,8 @@ export const constantRouter = [
     name: 'login', // 命名路由
     meta: {
       title: '登录', // 菜单标题
-      hidden: true // 代表路由标题在菜单中是否隐藏 true 隐藏 false 不隐藏 
-    }
+      hidden: true, // 代表路由标题在菜单中是否隐藏 true 隐藏 false 不隐藏
+    },
   },
   {
     path: '/',
@@ -15,26 +15,30 @@ export const constantRouter = [
     name: 'layout',
     meta: {
       title: 'layout', // 菜单标题
-      hidden: false
+      hidden: false,
     },
     children: [
       {
         path: '/home',
-        component: () => { '@/views/home/index.vue' },
+        component: () => {
+          '@/views/home/index.vue'
+        },
         meta: {
           title: '首页', // 菜单标题
-          hidden: true
-        }
+          hidden: true,
+        },
       },
       {
         path: '/ceshi',
-        component: () => { '@/views/home/index.vue' },
+        component: () => {
+          '@/views/home/index.vue'
+        },
         meta: {
-          title: '测试', // 
-          hidden: false
-        }
-      }
-    ]
+          title: '测试', //
+          hidden: false,
+        },
+      },
+    ],
   },
   {
     path: '/404',
@@ -42,8 +46,8 @@ export const constantRouter = [
     name: '404',
     meta: {
       title: '404', // 菜单标题
-      hidden: true
-    }
+      hidden: true,
+    },
   },
   {
     path: '/:pathMatch(.*)*',
@@ -51,7 +55,7 @@ export const constantRouter = [
     name: 'Any',
     meta: {
       title: '任意路由', // 菜单标题
-      hidden: true
-    }
+      hidden: true,
+    },
   },
 ]
