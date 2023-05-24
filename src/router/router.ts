@@ -8,16 +8,16 @@ export const constantRouter = [
       title: '登录', // 菜单标题
       hidden: true, // 代表路由标题在菜单中是否隐藏 true 隐藏 false
       icon: 'Promotion', // 菜单文字左侧的图标，支持element-plus全部图标
-    },
+    }
   },
   {
     path: '/',
     component: () => import('@/layout/index.vue'),
     name: 'layout',
     meta: {
-      title: 'layout',
+      title: '',
       hidden: false,
-      icon: 'Avatar',
+      icon: '',
     },
     redirect: '/home',
     children: [
@@ -28,9 +28,9 @@ export const constantRouter = [
           title: '首页',
           hidden: false,
           icon: 'HomeFilled',
-        },
-      },
-    ],
+        }
+      }
+    ]
   },
   {
     path: '/404',
@@ -40,7 +40,7 @@ export const constantRouter = [
       title: '404',
       hidden: true,
       icon: 'DocumentDelete',
-    },
+    }
   },
   {
     path: '/:pathMatch(.*)*',
@@ -50,7 +50,7 @@ export const constantRouter = [
       title: '任意路由',
       hidden: true,
       icon: 'List',
-    },
+    }
   },
   {
     path: '/screen',
@@ -60,7 +60,7 @@ export const constantRouter = [
       title: '数据大屏',
       hidden: false,
       icon: 'Platform',
-    },
+    }
   },
   {
     path: '/acl',
@@ -71,6 +71,7 @@ export const constantRouter = [
       hidden: false,
       icon: 'Lock',
     },
+    redirect: '/acl/user',
     children: [
       {
         path: '/acl/user',
@@ -80,7 +81,7 @@ export const constantRouter = [
           title: '用户管理',
           hidden: false,
           icon: 'User',
-        },
+        }
       },
       {
         path: '/acl/role',
@@ -90,7 +91,7 @@ export const constantRouter = [
           title: '角色管理',
           hidden: false,
           icon: 'UserFilled',
-        },
+        }
       },
       {
         path: '/acl/permission',
@@ -100,8 +101,8 @@ export const constantRouter = [
           title: '菜单管理',
           hidden: false,
           icon: 'Monitor',
-        },
-      },
+        }
+      }
     ],
   },
   {
@@ -113,16 +114,17 @@ export const constantRouter = [
       hidden: false,
       icon: 'Goods',
     },
+    redirect: '/product/trademark',
     children: [
       {
-        path: '/product/attr',
-        component: () => import('@/views/product/attr/index.vue'),
-        name: 'Attr',
+        path: '/product/trademark',
+        component: () => import('@/views/product/trademark/index.vue'),
+        name: 'Trademark',
         meta: {
-          title: '属性管理',
+          title: '品牌管理',
           hidden: false,
-          icon: 'ChromeFilled',
-        },
+          icon: 'ShoppingCartFull',
+        }
       },
       {
         path: '/product/sku',
@@ -132,7 +134,7 @@ export const constantRouter = [
           title: 'Sku管理',
           hidden: false,
           icon: 'Apple',
-        },
+        }
       },
       {
         path: '/product/spu',
@@ -142,18 +144,18 @@ export const constantRouter = [
           title: 'Spu管理',
           hidden: false,
           icon: 'Calendar',
-        },
+        }
       },
       {
-        path: '/product/trademark',
-        component: () => import('@/views/product/trademark/index.vue'),
-        name: 'Trademark',
+        path: '/product/attr',
+        component: () => import('@/views/product/attr/index.vue'),
+        name: 'Attr',
         meta: {
-          title: '品牌管理',
+          title: '属性管理',
           hidden: false,
-          icon: 'ShoppingCartFull',
-        },
-      },
-    ],
-  },
+          icon: 'ChromeFilled',
+        }
+      }
+    ]
+  }
 ]
