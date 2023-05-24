@@ -5,7 +5,12 @@
     circle
     @click="updateRefsh"
   ></el-button>
-  <el-button size="small" icon="FullScreen" circle></el-button>
+  <el-button
+    size="small"
+    icon="FullScreen"
+    circle
+    @click="fullScreen"
+  ></el-button>
   <el-button size="small" icon="Setting" circle></el-button>
   <img
     src="../../../public/vite.svg"
@@ -34,6 +39,19 @@ let layoutSettingStore = useLayOutSettingStore()
 // 刷新按钮点击回调
 const updateRefsh = () => {
   layoutSettingStore.refsh = !layoutSettingStore.refsh
+}
+// 全屏按钮点击回调
+const fullScreen = () => {
+  // Dom对象的一个属性：可以用来判断是否全屏，[全屏：true,非全屏：false]
+  let full = document.fullscreenElement
+  // 切换全屏模式
+  if (!full) {
+    // 文档根结点的方法requestFullscreen实现全屏模式
+    document.documentElement.requestFullscreen()
+  } else {
+    // 变为不是全屏模式->退出全屏模式
+    document.exitFullscreen()
+  }
 }
 </script>
 <script lang="ts">
