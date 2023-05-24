@@ -9,9 +9,9 @@
 // 引入设置标题与logo配置文件
 import setting from '@/setting'
 </script>
-<script  lang="ts">
+<script lang="ts">
 export default {
-  name: 'Logo'
+  name: 'Logo',
 }
 </script>
 
