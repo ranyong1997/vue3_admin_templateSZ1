@@ -5,9 +5,14 @@
   </el-icon>
   <el-breadcrumb separator-icon="ArrowRight">
     <!-- 面包屑动态展示-->
-    <el-breadcrumb-item v-for="(item, index) in $route.matched" :key="index" v-show="item.meta.title" :to="item.path">
+    <el-breadcrumb-item
+      v-for="(item, index) in $route.matched"
+      :key="index"
+      v-show="item.meta.title"
+      :to="item.path"
+    >
       <!-- 图标 -->
-      <el-icon style="margin:2px">
+      <el-icon style="margin: 2px">
         <component :is="item.meta.icon"></component>
       </el-icon>
       <span>{{ item.meta.title }}</span>

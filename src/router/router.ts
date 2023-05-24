@@ -8,7 +8,7 @@ export const constantRouter = [
       title: '登录', // 菜单标题
       hidden: true, // 代表路由标题在菜单中是否隐藏 true 隐藏 false
       icon: 'Promotion', // 菜单文字左侧的图标，支持element-plus全部图标
-    }
+    },
   },
   {
     path: '/',
@@ -28,9 +28,9 @@ export const constantRouter = [
           title: '首页',
           hidden: false,
           icon: 'HomeFilled',
-        }
-      }
-    ]
+        },
+      },
+    ],
   },
   {
     path: '/404',
@@ -40,7 +40,7 @@ export const constantRouter = [
       title: '404',
       hidden: true,
       icon: 'DocumentDelete',
-    }
+    },
   },
   {
     path: '/:pathMatch(.*)*',
@@ -50,7 +50,7 @@ export const constantRouter = [
       title: '任意路由',
       hidden: true,
       icon: 'List',
-    }
+    },
   },
   {
     path: '/screen',
@@ -60,7 +60,7 @@ export const constantRouter = [
       title: '数据大屏',
       hidden: false,
       icon: 'Platform',
-    }
+    },
   },
   {
     path: '/acl',
@@ -81,7 +81,7 @@ export const constantRouter = [
           title: '用户管理',
           hidden: false,
           icon: 'User',
-        }
+        },
       },
       {
         path: '/acl/role',
@@ -91,7 +91,7 @@ export const constantRouter = [
           title: '角色管理',
           hidden: false,
           icon: 'UserFilled',
-        }
+        },
       },
       {
         path: '/acl/permission',
@@ -101,8 +101,8 @@ export const constantRouter = [
           title: '菜单管理',
           hidden: false,
           icon: 'Monitor',
-        }
-      }
+        },
+      },
     ],
   },
   {
@@ -124,7 +124,7 @@ export const constantRouter = [
           title: '品牌管理',
           hidden: false,
           icon: 'ShoppingCartFull',
-        }
+        },
       },
       {
         path: '/product/sku',
@@ -134,7 +134,7 @@ export const constantRouter = [
           title: 'Sku管理',
           hidden: false,
           icon: 'Apple',
-        }
+        },
       },
       {
         path: '/product/spu',
@@ -144,7 +144,7 @@ export const constantRouter = [
           title: 'Spu管理',
           hidden: false,
           icon: 'Calendar',
-        }
+        },
       },
       {
         path: '/product/attr',
@@ -154,8 +154,8 @@ export const constantRouter = [
           title: '属性管理',
           hidden: false,
           icon: 'ChromeFilled',
-        }
-      }
-    ]
-  }
+        },
+      },
+    ],
+  },
 ]
