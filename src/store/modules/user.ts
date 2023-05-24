@@ -8,7 +8,7 @@ import type { UserState } from './types/type'
 // 引入路由(常量路由)
 import { constantRouter } from '@/router/router'
 // 引入操作本地存储的工具方法
-import { SET_TOKEN, GET_TOKEN } from '@/utils/token'
+import { SET_TOKEN, GET_TOKEN, REMOVE_TOKEN } from '@/utils/token'
 // 创建用户小仓库
 const useUserStore = defineStore('User', {
   // 小仓库存储数据地方
@@ -50,6 +50,14 @@ const useUserStore = defineStore('User', {
       } else {
       }
     },
+    // 退出登录
+    userLogout() {
+      // 目前没有mock接口：退出登录接口(通知服务器本地用户唯一标识失效)
+      this.token = '';
+      this.username = '';
+      this.avatar = '';
+      REMOVE_TOKEN();
+    }
   },
   getters: {},
 })
