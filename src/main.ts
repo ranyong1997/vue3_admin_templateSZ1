@@ -21,7 +21,7 @@ import './permisstion'
 const app = createApp(App)
 //安装element-plus插件
 app.use(ElementPlus, {
-    locale: zhCn, //element-plus国际化配置
+  locale: zhCn, //element-plus国际化配置
 })
 // 安装自定义插件
 app.use(gloalComponent)

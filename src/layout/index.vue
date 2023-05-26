@@ -1,43 +1,43 @@
 <template>
-    <div class="layout_container">
-        <!-- 左侧菜单 -->
-        <div
-            class="layout_slider"
-            :class="{ fold: LayOutSettingStore.fold ? true : false }"
+  <div class="layout_container">
+    <!-- 左侧菜单 -->
+    <div
+      class="layout_slider"
+      :class="{ fold: LayOutSettingStore.fold ? true : false }"
+    >
+      <Logo></Logo>
+      <!-- 展示菜单 -->
+      <!-- 滚动组件 -->
+      <el-scrollbar class="scrollbar">
+        <!-- 菜单组件 -->
+        <el-menu
+          :collapse="LayOutSettingStore.fold ? true : false"
+          :default-active="$route.path"
+          background-color="#001529"
+          text-color="white"
+          active-text-color="yellowgreen"
         >
-            <Logo></Logo>
-            <!-- 展示菜单 -->
-            <!-- 滚动组件 -->
-            <el-scrollbar class="scrollbar">
-                <!-- 菜单组件 -->
-                <el-menu
-                    :collapse="LayOutSettingStore.fold ? true : false"
-                    :default-active="$route.path"
-                    background-color="#001529"
-                    text-color="white"
-                    active-text-color="yellowgreen"
-                >
-                    <!-- 根据路由动态生成菜单 -->
-                    <Menu :menuList="userStore.menuRoutes"></Menu>
-                </el-menu>
-            </el-scrollbar>
-        </div>
-        <!-- 顶部导航 -->
-        <div
-            class="layout_tabbar"
-            :class="{ fold: LayOutSettingStore.fold ? true : false }"
-        >
-            <!-- layout组件 -->
-            <Tabbar></Tabbar>
-        </div>
-        <!-- 内容展示区域 -->
-        <div
-            class="layout_main"
-            :class="{ fold: LayOutSettingStore.fold ? true : false }"
-        >
-            <Main></Main>
-        </div>
+          <!-- 根据路由动态生成菜单 -->
+          <Menu :menuList="userStore.menuRoutes"></Menu>
+        </el-menu>
+      </el-scrollbar>
     </div>
+    <!-- 顶部导航 -->
+    <div
+      class="layout_tabbar"
+      :class="{ fold: LayOutSettingStore.fold ? true : false }"
+    >
+      <!-- layout组件 -->
+      <Tabbar></Tabbar>
+    </div>
+    <!-- 内容展示区域 -->
+    <div
+      class="layout_main"
+      :class="{ fold: LayOutSettingStore.fold ? true : false }"
+    >
+      <Main></Main>
+    </div>
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -62,63 +62,63 @@ let LayOutSettingStore = useLayOutSettingStore()
 </script>
 <script lang="ts">
 export default {
-    name: 'Layout',
+  name: 'Layout',
 }
 </script>
 
 <style scoped lang="scss">
 .layout_container {
-    width: 100%;
+  width: 100%;
+  height: 100vh;
+
+  .layout_slider {
+    width: $base_menu_widht;
     height: 100vh;
+    background: $base_menu_backgroud;
+    transition: all 0.3s;
 
-    .layout_slider {
-        width: $base_menu_widht;
-        height: 100vh;
-        background: $base_menu_backgroud;
-        transition: all 0.3s;
+    .scrollbar {
+      width: 100%;
+      height: calc(100vh - $base_menu_logo_height);
 
-        .scrollbar {
-            width: 100%;
-            height: calc(100vh - $base_menu_logo_height);
-
-            .el-menu {
-                border-right: none;
-            }
-        }
-
-        &.fold {
-            width: $base_menu_min_width;
-        }
+      .el-menu {
+        border-right: none;
+      }
     }
 
-    .layout_tabbar {
-        position: fixed;
-        width: calc(100% - $base_menu_widht);
-        height: $base_tabbar_height;
-        top: 0px;
-        left: $base_menu_widht;
-        transition: all 0.3s;
-
-        &.fold {
-            width: calc(100vw - $base_menu_min_width);
-            left: $base_menu_min_width;
-        }
+    &.fold {
+      width: $base_menu_min_width;
     }
+  }
 
-    .layout_main {
-        position: absolute;
-        width: calc(100% - $base_menu_widht);
-        height: calc(100vh - $base_tabbar_height);
-        left: $base_menu_widht;
-        top: $base_tabbar_height;
-        padding: 20px;
-        overflow: auto;
-        transition: all 0.3s;
+  .layout_tabbar {
+    position: fixed;
+    width: calc(100% - $base_menu_widht);
+    height: $base_tabbar_height;
+    top: 0px;
+    left: $base_menu_widht;
+    transition: all 0.3s;
 
-        &.fold {
-            width: calc(100vw - $base_menu_min_width);
-            left: $base_menu_min_width;
-        }
+    &.fold {
+      width: calc(100vw - $base_menu_min_width);
+      left: $base_menu_min_width;
     }
+  }
+
+  .layout_main {
+    position: absolute;
+    width: calc(100% - $base_menu_widht);
+    height: calc(100vh - $base_tabbar_height);
+    left: $base_menu_widht;
+    top: $base_tabbar_height;
+    padding: 20px;
+    overflow: auto;
+    transition: all 0.3s;
+
+    &.fold {
+      width: calc(100vw - $base_menu_min_width);
+      left: $base_menu_min_width;
+    }
+  }
 }
 </style>
