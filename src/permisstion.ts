@@ -15,7 +15,6 @@ let userStore = useUserStore(pinia)
 // 全局守卫：项目当中任意路由切换都会触发的钩子
 // 全局前置守卫
 router.beforeEach(async (to: any, from: any, next: any) => {
-
     // to:你将要访问的那个路由
     // from:你从那个路由而来
     // next:路由放行函数
@@ -53,11 +52,10 @@ router.beforeEach(async (to: any, from: any, next: any) => {
     } else {
         // 用户未登录判断
         if (to.path == '/login') {
-            next();
+            next()
         } else {
             next({ path: '/login', query: { redirect: to.path } })
         }
-
     }
 })
 // 全局后置守卫
@@ -66,4 +64,3 @@ router.afterEach((to: any, from: any) => {
     document.title = `${setting.title} - ${to.meta.title}`
     nprogress.done()
 })
-

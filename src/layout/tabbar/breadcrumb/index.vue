@@ -1,23 +1,25 @@
 <template>
-  <!-- 顶部左侧静态 -->
-  <el-icon style="margin-right: 10px" @click="changeIcon">
-    <component :is="LayOutSettingStore.fold ? 'Fold' : 'Expand'"></component>
-  </el-icon>
-  <el-breadcrumb separator-icon="ArrowRight">
-    <!-- 面包屑动态展示-->
-    <el-breadcrumb-item
-      v-for="(item, index) in $route.matched"
-      :key="index"
-      v-show="item.meta.title"
-      :to="item.path"
-    >
-      <!-- 图标 -->
-      <el-icon style="margin: 2px">
-        <component :is="item.meta.icon"></component>
-      </el-icon>
-      <span>{{ item.meta.title }}</span>
-    </el-breadcrumb-item>
-  </el-breadcrumb>
+    <!-- 顶部左侧静态 -->
+    <el-icon style="margin-right: 10px" @click="changeIcon">
+        <component
+            :is="LayOutSettingStore.fold ? 'Fold' : 'Expand'"
+        ></component>
+    </el-icon>
+    <el-breadcrumb separator-icon="ArrowRight">
+        <!-- 面包屑动态展示-->
+        <el-breadcrumb-item
+            v-for="(item, index) in $route.matched"
+            :key="index"
+            v-show="item.meta.title"
+            :to="item.path"
+        >
+            <!-- 图标 -->
+            <el-icon style="margin: 2px">
+                <component :is="item.meta.icon"></component>
+            </el-icon>
+            <span>{{ item.meta.title }}</span>
+        </el-breadcrumb-item>
+    </el-breadcrumb>
 </template>
 
 <script setup lang="ts">
@@ -28,8 +30,8 @@ import useLayOutSettingStore from '@/store/modules/setting'
 let LayOutSettingStore = useLayOutSettingStore()
 // 点击图表方法
 const changeIcon = () => {
-  // 图标进行切换
-  LayOutSettingStore.fold = !LayOutSettingStore.fold
+    // 图标进行切换
+    LayOutSettingStore.fold = !LayOutSettingStore.fold
 }
 // 获取路由对象
 let $route = useRoute()
@@ -37,7 +39,7 @@ let $route = useRoute()
 
 <script lang="ts">
 export default {
-  name: 'Breadcrumb',
+    name: 'Breadcrumb',
 }
 </script>
 
