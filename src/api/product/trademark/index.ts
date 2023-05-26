@@ -2,12 +2,11 @@
 import request from '@/utils/request'
 // 品牌管理模块接口地址
 enum API {
-    // 获取已有的品牌接口
-    TRADEMAEK_URL = "/admin/product/baseTrademark/"
+  // 获取已有的品牌接口
+  TRADEMAEK_URL = '/admin/product/baseTrademark/',
 }
 // 获取已有平拍的接口方法
 // page:获取第几页 -- 默认第一页
 // limit:获取几个已有品牌的数据
-export const reqHasTrademark = (page: number, limit: number) => request.get<any, any>(
-    API.TRADEMAEK_URL + `${page}/${limit}`
-)
+export const reqHasTrademark = (page: number, limit: number) =>
+  request.get<any, any>(API.TRADEMAEK_URL + `${page}/${limit}`)

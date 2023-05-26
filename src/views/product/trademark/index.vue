@@ -4,7 +4,12 @@
     <el-button type="primary" icon="Plus">添加品牌</el-button>
     <!-- 表格组件：用于展示已有的平台数据 -->
     <el-table style="margin: 10px 0px" border :data="trademarkArr">
-      <el-table-column label="序号" width="80px" align="center" type="index"></el-table-column>
+      <el-table-column
+        label="序号"
+        width="80px"
+        align="center"
+        type="index"
+      ></el-table-column>
       <el-table-column label="品牌名称" align="center">
         <template #="{ row, $index }">
           <pre>{{ row.tmName }}</pre>
@@ -12,20 +17,25 @@
       </el-table-column>
       <el-table-column label="品牌LOGO" align="center">
         <template #="{ row, $index }">
-          <img :src="row.logoUrl" style="width:100px;height:100px">
+          <img :src="row.logoUrl" style="width: 100px; height: 100px" />
         </template>
       </el-table-column>
       <el-table-column label="品牌操作">
         <template #="{ row, $index }">
           <el-button type="primary" size="small" icon="Edit"></el-button>
           <el-button type="danger" size="small" icon="Delete"></el-button>
-
         </template>
       </el-table-column>
     </el-table>
     <!-- 分页器 -->
-    <el-pagination v-model:current-page="pageNo" v-model:page-size="limit" :page-sizes="[3, 5, 7, 9]" :background="true"
-      layout="prev, pager, next, jumper, ->, sizes, total," :total="total" />
+    <el-pagination
+      v-model:current-page="pageNo"
+      v-model:page-size="limit"
+      :page-sizes="[3, 5, 7, 9]"
+      :background="true"
+      layout="prev, pager, next, jumper, ->, sizes, total,"
+      :total="total"
+    />
   </el-card>
 </template>
 
