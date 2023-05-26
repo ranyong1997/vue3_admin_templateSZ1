@@ -10,4 +10,6 @@ enum API {
 // page:获取第几页 -- 默认第一页
 // limit:获取几个已有品牌的数据
 export const reqHasTrademark = (page: number, limit: number) =>
-  request.get<any, TradeMarkResponseData>(API.TRADEMAEK_URL + `${page}/${limit}`)
+  request.get<any, TradeMarkResponseData>(
+    API.TRADEMAEK_URL + `${page}/${limit}`,
+  )
