@@ -4,7 +4,12 @@
     <el-button type="primary" icon="Plus">添加品牌</el-button>
     <!-- 表格组件：用于展示已有的平台数据 -->
     <el-table style="margin: 10px 0px" border :data="trademarkArr">
-      <el-table-column label="序号" width="80px" align="center" type="index"></el-table-column>
+      <el-table-column
+        label="序号"
+        width="80px"
+        align="center"
+        type="index"
+      ></el-table-column>
       <el-table-column label="品牌名称" align="center">
         <template #="{ row, $index }">
           <pre>{{ row.tmName }}</pre>
@@ -23,9 +28,17 @@
       </el-table-column>
     </el-table>
     <!-- 分页器 -->
-    <el-pagination @size-change="sizeChange" @current-change="getHasTrademark" :page-count="8"
-      v-model:current-page="pageNo" v-model:page-size="limit" :page-sizes="[3, 5, 7, 9]" :background="true"
-      layout="prev, pager, next, jumper, ->, sizes, total," :total="total" />
+    <el-pagination
+      @size-change="sizeChange"
+      @current-change="getHasTrademark"
+      :page-count="8"
+      v-model:current-page="pageNo"
+      v-model:page-size="limit"
+      :page-sizes="[3, 5, 7, 9]"
+      :background="true"
+      layout="prev, pager, next, jumper, ->, sizes, total,"
+      :total="total"
+    />
   </el-card>
 </template>
 
