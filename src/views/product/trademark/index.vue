@@ -4,12 +4,7 @@
     <el-button type="primary" icon="Plus">添加品牌</el-button>
     <!-- 表格组件：用于展示已有的平台数据 -->
     <el-table style="margin: 10px 0px" border :data="trademarkArr">
-      <el-table-column
-        label="序号"
-        width="80px"
-        align="center"
-        type="index"
-      ></el-table-column>
+      <el-table-column label="序号" width="80px" align="center" type="index"></el-table-column>
       <el-table-column label="品牌名称" align="center">
         <template #="{ row, $index }">
           <pre>{{ row.tmName }}</pre>
@@ -28,14 +23,9 @@
       </el-table-column>
     </el-table>
     <!-- 分页器 -->
-    <el-pagination
-      v-model:current-page="pageNo"
-      v-model:page-size="limit"
-      :page-sizes="[3, 5, 7, 9]"
-      :background="true"
-      layout="prev, pager, next, jumper, ->, sizes, total,"
-      :total="total"
-    />
+    <el-pagination @size-change="sizeChange" @current-change="getHasTrademark" :page-count="8"
+      v-model:current-page="pageNo" v-model:page-size="limit" :page-sizes="[3, 5, 7, 9]" :background="true"
+      layout="prev, pager, next, jumper, ->, sizes, total," :total="total" />
   </el-card>
 </template>
 
@@ -56,7 +46,9 @@ let total = ref<number>(0)
 // 存储已有品牌的数据
 let trademarkArr = ref<Records>([])
 // 获取已有品牌的接口封装为一个函数
-const getHasTrademark = async () => {
+const getHasTrademark = async (pager = 1) => {
+  // 当前页码
+  pageNo.value = pager
   let result: TradeMarkResponseData = await reqHasTrademark(
     pageNo.value,
     limit.value,
@@ -71,6 +63,11 @@ const getHasTrademark = async () => {
 onMounted(() => {
   getHasTrademark()
 })
+// 当下拉菜单发生变化的时候，会触发此方法
+// 这个自定义事件，分页器组件会将下拉菜单选中数据返回
+const sizeChange = () => {
+  getHasTrademark()
+}
 </script>
 
 <style scoped></style>
