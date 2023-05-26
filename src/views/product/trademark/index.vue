@@ -4,12 +4,7 @@
     <el-button type="primary" icon="Plus">添加品牌</el-button>
     <!-- 表格组件：用于展示已有的平台数据 -->
     <el-table style="margin: 10px 0px" border :data="trademarkArr">
-      <el-table-column
-        label="序号"
-        width="80px"
-        align="center"
-        type="index"
-      ></el-table-column>
+      <el-table-column label="序号" width="80px" align="center" type="index"></el-table-column>
       <el-table-column label="品牌名称" align="center">
         <template #="{ row, $index }">
           <pre>{{ row.tmName }}</pre>
@@ -28,14 +23,8 @@
       </el-table-column>
     </el-table>
     <!-- 分页器 -->
-    <el-pagination
-      v-model:current-page="pageNo"
-      v-model:page-size="limit"
-      :page-sizes="[3, 5, 7, 9]"
-      :background="true"
-      layout="prev, pager, next, jumper, ->, sizes, total,"
-      :total="total"
-    />
+    <el-pagination v-model:current-page="pageNo" v-model:page-size="limit" :page-sizes="[3, 5, 7, 9]" :background="true"
+      layout="prev, pager, next, jumper, ->, sizes, total," :total="total" />
   </el-card>
 </template>
 
@@ -43,6 +32,7 @@
 // 引入组合式API函数ref
 import { ref, onMounted } from 'vue'
 import { reqHasTrademark } from '@/api/product/trademark'
+import type { Records, TradeMarkResponseData } from '@/api/product/trademark/type'
 // 当前页码
 let pageNo = ref<number>(1)
 // 每一页展示多少条数据
@@ -50,10 +40,10 @@ let limit = ref<number>(3)
 // 存储已有品牌数据总数
 let total = ref<number>(0)
 // 存储已有品牌的数据
-let trademarkArr = ref<any>([])
+let trademarkArr = ref<Records>([])
 // 获取已有品牌的接口封装为一个函数
 const getHasTrademark = async () => {
-  let result = await reqHasTrademark(pageNo.value, limit.value)
+  let result: TradeMarkResponseData = await reqHasTrademark(pageNo.value, limit.value)
   if (result.code == 200) {
     // 存储已有品牌总个数
     total.value = result.data.total
