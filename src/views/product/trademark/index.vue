@@ -2,10 +2,17 @@
   <div>
     <el-card class="box-card">
       <!-- 卡片顶部添加品牌按钮 -->
-      <el-button type="primary" icon="Plus" @click="addTrademark">添加品牌</el-button>
+      <el-button type="primary" icon="Plus" @click="addTrademark">
+        添加品牌
+      </el-button>
       <!-- 表格组件：用于展示已有的平台数据 -->
       <el-table style="margin: 10px 0px" border :data="trademarkArr">
-        <el-table-column label="序号" width="80px" align="center" type="index"></el-table-column>
+        <el-table-column
+          label="序号"
+          width="80px"
+          align="center"
+          type="index"
+        ></el-table-column>
         <el-table-column label="品牌名称" align="center">
           <template #="{ row, $index }">
             <pre>{{ row.tmName }}</pre>
@@ -18,15 +25,28 @@
         </el-table-column>
         <el-table-column label="品牌操作">
           <template #="{ row, $index }">
-            <el-button type="primary" size="small" icon="Edit" @click="updateTrademark"></el-button>
+            <el-button
+              type="primary"
+              size="small"
+              icon="Edit"
+              @click="updateTrademark"
+            ></el-button>
             <el-button type="danger" size="small" icon="Delete"></el-button>
           </template>
         </el-table-column>
       </el-table>
       <!-- 分页器 -->
-      <el-pagination @size-change="sizeChange" @current-change="getHasTrademark" :page-count="8"
-        v-model:current-page="pageNo" v-model:page-size="limit" :page-sizes="[3, 5, 7, 9]" :background="true"
-        layout="prev, pager, next, jumper, ->, sizes, total," :total="total" />
+      <el-pagination
+        @size-change="sizeChange"
+        @current-change="getHasTrademark"
+        :page-count="8"
+        v-model:current-page="pageNo"
+        v-model:page-size="limit"
+        :page-sizes="[3, 5, 7, 9]"
+        :background="true"
+        layout="prev, pager, next, jumper, ->, sizes, total,"
+        :total="total"
+      />
     </el-card>
     <!-- 对话框组件：在添加品牌与修改已有品牌的业务时候使用结构 -->
     <!-- 
@@ -34,13 +54,18 @@
       title:设置对话框左上角标题
     -->
     <el-dialog v-model="dialogFormVisible" title="添加品牌">
-      <el-form style="width:80%">
+      <el-form style="width: 80%">
         <el-form-item label="品牌名称" label-width="80px">
           <el-input placeholder="请您输入品牌名称"></el-input>
         </el-form-item>
         <el-form-item label="品牌LOGO" label-width="80px">
-          <el-upload class="avatar-uploader" action="https://run.mocky.io/v3/9d059bf9-4660-45f2-925d-ce80ad6c4d15"
-            :show-file-list="false" :on-success="handleAvatarSuccess" :before-upload="beforeAvatarUpload">
+          <el-upload
+            class="avatar-uploader"
+            action="https://run.mocky.io/v3/9d059bf9-4660-45f2-925d-ce80ad6c4d15"
+            :show-file-list="false"
+            :on-success="handleAvatarSuccess"
+            :before-upload="beforeAvatarUpload"
+          >
             <img v-if="imageUrl" :src="imageUrl" class="avatar" />
             <el-icon v-else class="avatar-uploader-icon">
               <Plus />
@@ -51,9 +76,7 @@
       <!-- 具名插槽：footer -->
       <template #footer>
         <el-button @click="cancel">取消</el-button>
-        <el-button type="primary" @click="confirm">
-          确定
-        </el-button>
+        <el-button type="primary" @click="confirm">确定</el-button>
       </template>
     </el-dialog>
   </div>
