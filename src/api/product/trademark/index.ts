@@ -8,7 +8,7 @@ enum API {
   // 添加品牌
   ADDTRADEMAEK_URL = '/admin/product/baseTrademark/save',
   // 修改已有品牌
-  UPDATETRADEMARK_URL = '/admin/product/baseTrademark/update'
+  UPDATETRADEMARK_URL = '/admin/product/baseTrademark/update',
 }
 // 获取已有平拍的接口方法
 // page:获取第几页 -- 默认第一页
