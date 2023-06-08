@@ -7,12 +7,7 @@
       </el-button>
       <!-- 表格组件：用于展示已有的平台数据 -->
       <el-table style="margin: 10px 0px" border :data="trademarkArr">
-        <el-table-column
-          label="序号"
-          width="80px"
-          align="center"
-          type="index"
-        ></el-table-column>
+        <el-table-column label="序号" width="80px" align="center" type="index"></el-table-column>
         <el-table-column label="品牌名称" align="center">
           <template #="{ row, $index }">
             <pre>{{ row.tmName }}</pre>
@@ -25,55 +20,30 @@
         </el-table-column>
         <el-table-column label="品牌操作">
           <template #="{ row, $index }">
-            <el-button
-              type="primary"
-              size="small"
-              icon="Edit"
-              @click="updateTrademark"
-            ></el-button>
+            <el-button type="primary" size="small" icon="Edit" @click="updateTrademark(row)"></el-button>
             <el-button type="danger" size="small" icon="Delete"></el-button>
           </template>
         </el-table-column>
       </el-table>
       <!-- 分页器 -->
-      <el-pagination
-        @size-change="sizeChange"
-        @current-change="getHasTrademark"
-        :page-count="8"
-        v-model:current-page="pageNo"
-        v-model:page-size="limit"
-        :page-sizes="[3, 5, 7, 9]"
-        :background="true"
-        layout="prev, pager, next, jumper, ->, sizes, total,"
-        :total="total"
-      />
+      <el-pagination @size-change="sizeChange" @current-change="getHasTrademark" :page-count="8"
+        v-model:current-page="pageNo" v-model:page-size="limit" :page-sizes="[3, 5, 7, 9]" :background="true"
+        layout="prev, pager, next, jumper, ->, sizes, total," :total="total" />
     </el-card>
     <!-- 对话框组件：在添加品牌与修改已有品牌的业务时候使用结构 -->
     <!-- 
       v-model：属性用户控制对话框的显示与隐藏 true显示 false隐藏
       title:设置对话框左上角标题
     -->
-    <el-dialog v-model="dialogFormVisible" title="添加品牌">
-      <el-form style="width: 80%">
-        <el-form-item label="品牌名称" label-width="80px">
-          <el-input
-            placeholder="请您输入品牌名称"
-            v-model="trademarkParams.tmName"
-          ></el-input>
+    <el-dialog v-model="dialogFormVisible" :title="trademarkParams.id ? '修改品牌' : '添加品牌'">
+      <el-form style="width: 80%" :model="trademarkParams" :rules="rules" ref="formRef">
+        <el-form-item label="品牌名称" label-width="100px" prop="tmName">
+          <el-input placeholder="请您输入品牌名称" v-model="trademarkParams.tmName"></el-input>
         </el-form-item>
-        <el-form-item label="品牌LOGO" label-width="80px">
-          <el-upload
-            class="avatar-uploader"
-            action="/api/admin/product/fileUpload"
-            :show-file-list="false"
-            :on-success="handleAvatarSuccess"
-            :before-upload="beforeAvatarUpload"
-          >
-            <img
-              v-if="trademarkParams.logoUrl"
-              :src="trademarkParams.logoUrl"
-              class="avatar"
-            />
+        <el-form-item label="品牌LOGO" label-width="100px" prop="logoUrl">
+          <el-upload class="avatar-uploader" action="/api/admin/product/fileUpload" :show-file-list="false"
+            :on-success="handleAvatarSuccess" :before-upload="beforeAvatarUpload">
+            <img v-if="trademarkParams.logoUrl" :src="trademarkParams.logoUrl" class="avatar" />
             <el-icon v-else class="avatar-uploader-icon">
               <Plus />
             </el-icon>
@@ -117,6 +87,8 @@ let trademarkParams = reactive<TradeMark>({
   tmName: '',
   logoUrl: '',
 })
+// 获取el-form组件实例
+let formRef = ref()
 // 获取已有品牌的接口封装为一个函数
 const getHasTrademark = async (pager = 1) => {
   // 当前页码
@@ -145,13 +117,22 @@ const addTrademark = () => {
   // 对话框显示
   dialogFormVisible.value = true
   // 清空手机数据
+  trademarkParams.id = 0
   trademarkParams.tmName = ''
   trademarkParams.logoUrl = ''
+  formRef.value?.clearValidate('tmName')
+  formRef.value?.clearValidate('logoUrl')
 }
 // 修改已有品牌的按钮的回调
-const updateTrademark = () => {
+// row:row即为已有品牌
+const updateTrademark = (row: TradeMark) => {
+  // 清空校验规则错误提示信息
+  formRef.value?.clearValidate('tmName')
+  formRef.value?.clearValidate('logoUrl')
   // 对话框显示
   dialogFormVisible.value = true
+  // 展示已有品牌的数据
+  Object.assign(trademarkParams, row);
 }
 // 对话框底部取消按钮
 const cancel = () => {
@@ -160,23 +141,26 @@ const cancel = () => {
 }
 // 对话框底部确认按钮
 const confirm = async () => {
+  // 在你发请求之前，要对于整个表单进行校验
+  await formRef.value.validate()
+  // 调用这个方法进行全部表单相校验，如果校验全部通过，在执行后面的语法
   let result: any = await reqAddOrUpdateTrademark(trademarkParams)
-  // 添加品牌成功
+  // 添加|修改品牌成功
   if (result.code == 200) {
     // 关闭对话框
     dialogFormVisible.value = false
     // 弹出提示信息
     ElMessage({
       type: 'success',
-      message: '添加品牌成功',
+      message: trademarkParams.id ? '修改品牌成功' : '添加品牌成功',
     })
     // 再次发请求获取已有全部的品牌树
-    getHasTrademark()
+    getHasTrademark(trademarkParams.id ? pageNo.value : 1)
   } else {
     // 添加品牌失败
     ElMessage({
       type: 'error',
-      message: '添加品牌失败',
+      message: trademarkParams.id ? '修改品牌失败' : '添加品牌失败'
     })
     // 关闭对话框
     dialogFormVisible.value = false
@@ -214,6 +198,37 @@ const handleAvatarSuccess: UploadProps['onSuccess'] = (
   // response:即为当前这次上传图片post请求服务器返回的数据
   // 收集上传图片的地址，添加一个新的品牌的时候带给服务器
   trademarkParams.logoUrl = response.data
+  // 图片上传成功，清除掉对应图片校验结果
+  formRef.value.clearValidate('logoUrl')
+}
+// 品牌自定义校验规则方法
+const vilidatorTmName = (rule: any, value: any, callback: any) => {
+  // 自定义校验规则
+  if (value.trim().length >= 2) {
+    callback()
+  } else {
+    // 校验未通过返回错误信息
+    callback(new Error('品牌名称位数大于等于两位'))
+  }
+}
+// 品牌logo图片的自定义校验规则方法
+const validatorLogoUrl = (rule: any, value: any, callback: any) => {
+  // 如果图片上传
+  if (value) {
+    callback()
+  } else {
+    callback(new Error('LOGO图片务必上传'))
+  }
+}
+// 表单校验规则
+const rules = {
+  tmName: [
+    // required：这个字段务必校验，表单项前面出来的五角星
+    { required: true, trigger: 'blur', validator: vilidatorTmName }
+  ],
+  logoUrl: [
+    { required: true, validator: validatorLogoUrl }
+  ]
 }
 </script>
 
