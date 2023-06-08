@@ -7,7 +7,12 @@
       </el-button>
       <!-- 表格组件：用于展示已有的平台数据 -->
       <el-table style="margin: 10px 0px" border :data="trademarkArr">
-        <el-table-column label="序号" width="80px" align="center" type="index"></el-table-column>
+        <el-table-column
+          label="序号"
+          width="80px"
+          align="center"
+          type="index"
+        ></el-table-column>
         <el-table-column label="品牌名称" align="center">
           <template #="{ row, $index }">
             <pre>{{ row.tmName }}</pre>
@@ -20,30 +25,63 @@
         </el-table-column>
         <el-table-column label="品牌操作">
           <template #="{ row, $index }">
-            <el-button type="primary" size="small" icon="Edit" @click="updateTrademark(row)"></el-button>
+            <el-button
+              type="primary"
+              size="small"
+              icon="Edit"
+              @click="updateTrademark(row)"
+            ></el-button>
             <el-button type="danger" size="small" icon="Delete"></el-button>
           </template>
         </el-table-column>
       </el-table>
       <!-- 分页器 -->
-      <el-pagination @size-change="sizeChange" @current-change="getHasTrademark" :page-count="8"
-        v-model:current-page="pageNo" v-model:page-size="limit" :page-sizes="[3, 5, 7, 9]" :background="true"
-        layout="prev, pager, next, jumper, ->, sizes, total," :total="total" />
+      <el-pagination
+        @size-change="sizeChange"
+        @current-change="getHasTrademark"
+        :page-count="8"
+        v-model:current-page="pageNo"
+        v-model:page-size="limit"
+        :page-sizes="[3, 5, 7, 9]"
+        :background="true"
+        layout="prev, pager, next, jumper, ->, sizes, total,"
+        :total="total"
+      />
     </el-card>
     <!-- 对话框组件：在添加品牌与修改已有品牌的业务时候使用结构 -->
     <!-- 
       v-model：属性用户控制对话框的显示与隐藏 true显示 false隐藏
       title:设置对话框左上角标题
     -->
-    <el-dialog v-model="dialogFormVisible" :title="trademarkParams.id ? '修改品牌' : '添加品牌'">
-      <el-form style="width: 80%" :model="trademarkParams" :rules="rules" ref="formRef">
+    <el-dialog
+      v-model="dialogFormVisible"
+      :title="trademarkParams.id ? '修改品牌' : '添加品牌'"
+    >
+      <el-form
+        style="width: 80%"
+        :model="trademarkParams"
+        :rules="rules"
+        ref="formRef"
+      >
         <el-form-item label="品牌名称" label-width="100px" prop="tmName">
-          <el-input placeholder="请您输入品牌名称" v-model="trademarkParams.tmName"></el-input>
+          <el-input
+            placeholder="请您输入品牌名称"
+            v-model="trademarkParams.tmName"
+          ></el-input>
         </el-form-item>
         <el-form-item label="品牌LOGO" label-width="100px" prop="logoUrl">
-          <el-upload class="avatar-uploader" action="/api/admin/product/fileUpload" :show-file-list="false"
-            :on-success="handleAvatarSuccess" :before-upload="beforeAvatarUpload">
-            <img v-if="trademarkParams.logoUrl" :src="trademarkParams.logoUrl" class="avatar" />
+          <el-upload
+            class="avatar-uploader"
+            action="/api/admin/product/fileUpload"
+            :show-file-list="false"
+            :on-success="handleAvatarSuccess"
+            :before-upload="beforeAvatarUpload"
+          >
+            <img
+              v-if="trademarkParams.logoUrl"
+              :src="trademarkParams.logoUrl"
+              class="avatar"
+            />
             <el-icon v-else class="avatar-uploader-icon">
               <Plus />
             </el-icon>
@@ -132,7 +170,7 @@ const updateTrademark = (row: TradeMark) => {
   // 对话框显示
   dialogFormVisible.value = true
   // 展示已有品牌的数据
-  Object.assign(trademarkParams, row);
+  Object.assign(trademarkParams, row)
 }
 // 对话框底部取消按钮
 const cancel = () => {
@@ -160,7 +198,7 @@ const confirm = async () => {
     // 添加品牌失败
     ElMessage({
       type: 'error',
-      message: trademarkParams.id ? '修改品牌失败' : '添加品牌失败'
+      message: trademarkParams.id ? '修改品牌失败' : '添加品牌失败',
     })
     // 关闭对话框
     dialogFormVisible.value = false
@@ -224,11 +262,9 @@ const validatorLogoUrl = (rule: any, value: any, callback: any) => {
 const rules = {
   tmName: [
     // required：这个字段务必校验，表单项前面出来的五角星
-    { required: true, trigger: 'blur', validator: vilidatorTmName }
+    { required: true, trigger: 'blur', validator: vilidatorTmName },
   ],
-  logoUrl: [
-    { required: true, validator: validatorLogoUrl }
-  ]
+  logoUrl: [{ required: true, validator: validatorLogoUrl }],
 }
 </script>
 

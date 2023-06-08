@@ -22,7 +22,7 @@ export const reqHasTrademark = (page: number, limit: number) =>
 export const reqAddOrUpdateTrademark = (data: TradeMark) => {
   // 修改已有品牌的数据
   if (data.id) {
-    return request.put<any, any>(API.UPDATETRADEMARK_URL,data)
+    return request.put<any, any>(API.UPDATETRADEMARK_URL, data)
   } else {
     // 新增品牌
     return request.post<any, any>(API.ADDTRADEMAEK_URL, data)
