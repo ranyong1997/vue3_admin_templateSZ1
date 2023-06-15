@@ -17,4 +17,3 @@ export interface CategoryState {
   c3Arr: CategoryOjb[]
   c3Id: string | number
 }
-

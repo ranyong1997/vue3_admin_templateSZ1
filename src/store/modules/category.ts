@@ -17,7 +17,7 @@ let useCategoryStore = defineStore('Category', {
       // 存储三级分类的数据
       c3Arr: [],
       // 存储三级分类的ID
-      c3Id: ''
+      c3Id: '',
     }
   },
   actions: {
@@ -44,7 +44,7 @@ let useCategoryStore = defineStore('Category', {
       if (result.code == 200) {
         this.c3Arr = result.data
       }
-    }
+    },
   },
   getters: {},
 })
