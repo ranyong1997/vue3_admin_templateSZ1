@@ -4,7 +4,12 @@
       <el-form-item label="一级分类">
         <el-select v-model="categoryStore.c1Id">
           <!-- label:既为展示数据 value:既为select下拉菜单收集的数据 -->
-          <el-option v-for="(c1, index) in categoryStore.c1Arr" :key="c1.id" :label="c1.name" :value="c1.id"></el-option>
+          <el-option
+            v-for="(c1, index) in categoryStore.c1Arr"
+            :key="c1.id"
+            :label="c1.name"
+            :value="c1.id"
+          ></el-option>
         </el-select>
       </el-form-item>
       <el-form-item label="二级分类">
@@ -29,7 +34,7 @@
 
 <script setup lang="ts">
 // 引入组件挂载完毕的方法
-import { onMounted } from 'vue';
+import { onMounted } from 'vue'
 // 引入分类相关的仓库
 import useCategoryStore from '@/store/modules/category'
 let categoryStore = useCategoryStore()
