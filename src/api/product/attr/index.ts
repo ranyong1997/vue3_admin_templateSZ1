@@ -10,7 +10,7 @@ enum API {
   // 修改已有品牌
   C3_URL = '/admin/product/getCategory3/',
   // 获取分类下已有的属性与属性值
-  ATTR_URL = '/admin/product/attrInfoList/'
+  ATTR_URL = '/admin/product/attrInfoList/',
 }
 
 // 获取一级分类的接口方法
@@ -28,7 +28,7 @@ export const reqC3 = (category2Id: number | string) =>
 export const reqAttr = (
   category1Id: string | number,
   category2Id: string | number,
-  category3Id: string | number
+  category3Id: string | number,
 ) =>
   request.get<any, AttrResponseData>(
     API.ATTR_URL + `${category1Id}/${category2Id}/${category3Id}`,

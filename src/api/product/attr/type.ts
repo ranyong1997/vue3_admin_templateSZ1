@@ -20,18 +20,18 @@ export interface CategoryResponseDate extends ResponseData {
 
 //  属性值对象的ts类型
 export interface AttrValue {
-  id: number,
-  valueName: string,
+  id: number
+  valueName: string
   attrId: number
 }
 // 存储每一个属性值的数组类型
 export type AttrValueList = AttrValue[]
 // 属性对象
 export interface Attr {
-  id: number,
-  attrName: string,
-  categoryId: number,
-  categoryLevel: number,
+  id: number
+  attrName: string
+  categoryId: number
+  categoryLevel: number
   attrValueList: AttrValueList
 }
 // 存储每一个属性对象的数组ts类型
